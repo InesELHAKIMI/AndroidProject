@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_chercher"
+            android:icon="@drawable/ic_search_white_24dp"
+            android:title="Chercher Proposition" />
+        <item
+            android:id="@+id/nav_fav"
+            android:icon="@drawable/ic_favorite_border_white_24dp"
+            android:title="Favoris" />
+        <item
+            android:id="@+id/nav_tend"
+            android:icon="@drawable/ic_date_range_white_24dp"
+            android:title="Les tendances de l'année" />
+        <item
+            android:id="@+id/nav_ques"
+            android:icon="@drawable/ic_question_answer_white_24dp"
+            android:title="Question / Reponse" />
+    </group>
+
+
+</menu>
