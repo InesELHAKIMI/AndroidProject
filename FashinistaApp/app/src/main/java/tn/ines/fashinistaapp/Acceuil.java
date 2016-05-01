@@ -57,34 +57,10 @@ public class Acceuil extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-       // populateEventList();
-      //  registerCallBack();
+
     }
 
 
-
-  /*  private void populateEventList() {
-       String[] myItems={"Marriage","Soutenance","Fiançaille","Picnic"};
-
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.listitem,R.id.textview, myItems);
-
-        ListView list =(ListView) findViewById(R.id.listView);
-        list.setAdapter(adapter);
-    }
-
-    private void registerCallBack() {
-        ListView list =(ListView) findViewById(R.id.listView);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView textview = (TextView) view;
-                String message = "Vous avez choisi "+textview.getText().toString();
-                Toast.makeText(Acceuil.this,message,Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-*/
 
     @Override
     public void onBackPressed() {
