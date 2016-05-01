@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="FashiNista"
+        android:text="FashiONista"
         android:textSize="25dp"
         android:id="@+id/tt"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
