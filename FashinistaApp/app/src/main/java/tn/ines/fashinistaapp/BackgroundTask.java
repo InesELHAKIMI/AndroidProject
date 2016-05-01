@@ -26,13 +26,15 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
 
     AlertDialog alertDialog;
     Context ctx;
+    String msg="";
 
-    BackgroundTask(Context cnx){ this.ctx=cnx;}
+    BackgroundTask(Context ctx){ this.ctx=ctx;}
 
     @Override
     protected void onPreExecute(){
         alertDialog = new AlertDialog.Builder(ctx).create();
-       // alertDialog.setTitle("Login Information....");
+        alertDialog.setTitle("Login Information....");
+
     }
 
     @Override
@@ -47,10 +49,10 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
             String Motpasse=params[2];
 
             try {
-                     URL url =new URL(reg_url);
-                     HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-                     httpURLConnection.setRequestMethod("POST");
-                     httpURLConnection.setDoOutput(true);
+                URL url =new URL(reg_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
                 OutputStream os=httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
                 String data= URLEncoder.encode("Login","UTF-8")+"="+URLEncoder.encode(Login,"UTF-8")+"&"+URLEncoder.encode("Motpasse","UTF-8")+"="+URLEncoder.encode(Motpasse,"UTF-8")
@@ -70,7 +72,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             }
 
-        }else if (methode.equals("Login")) {
+        }else if (params!=null&&methode.equals("Login")) {
             String Login = params[1];
             String Motpasse = params[2];
             try {
@@ -93,19 +95,23 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
                 String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     response += line;
+                    /*if(line.contains(Login)&&line.contains(Motpasse))
+                    {
+                        msg="success";
+                    }*/
                 }
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                return "Login success...";
+                return response;
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
 
+        }
 
         return null;
     }
@@ -118,16 +124,15 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result){
 
-        if (result.equals("Registration Success...")) {
+        if (result!=null && result.equals("Registration Success...")) {
             Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
-
         }
         else
         {
             alertDialog.setMessage(result);
             alertDialog.show();
-
         }
+
 
 
 

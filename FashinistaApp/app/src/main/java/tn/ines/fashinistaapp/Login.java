@@ -34,10 +34,10 @@ public class Login extends AppCompatActivity {
 
         String methode="Login";
         BackgroundTask backgroundTask =new BackgroundTask(this);
+        startActivity(new Intent(this,Acceuil.class));
         backgroundTask.execute(methode, nom, motpasse);
-        finish();
+       // finish();
 
-            startActivity(new Intent(this,Acceuil.class));
 
     }
 

@@ -12,6 +12,12 @@
     tools:context="tn.ines.fashinistaapp.Acceuil"
     tools:showIn="@layout/app_bar_acceuil">
 
+
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
     <TextView
         android:id="@+id/txt_sexe"
         android:layout_width="wrap_content"
