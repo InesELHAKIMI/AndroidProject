@@ -32,7 +32,6 @@ public class Acceuil extends AppCompatActivity
     View myview;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,14 +57,14 @@ public class Acceuil extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        populateEventList();
-        registerCallBack();
+       // populateEventList();
+      //  registerCallBack();
     }
 
 
 
-    private void populateEventList() {
-        String[] myItems={"Marriage","Soutenance","Fiançaille","Picnic"};
+  /*  private void populateEventList() {
+       String[] myItems={"Marriage","Soutenance","Fiançaille","Picnic"};
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.listitem,R.id.textview, myItems);
 
@@ -85,6 +84,7 @@ public class Acceuil extends AppCompatActivity
             }
         });
     }
+*/
 
     @Override
     public void onBackPressed() {
@@ -118,6 +118,7 @@ public class Acceuil extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -127,6 +128,10 @@ public class Acceuil extends AppCompatActivity
 
         if(id==R.id.nav_tend){
             fragmentManager.beginTransaction().replace(R.id.content_frame,new SecondFragment()).commit();
+
+        }else if(id==R.id.nav_chercher)
+        {
+            fragmentManager.beginTransaction().replace(R.id.content_frame,new FirstFragment()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

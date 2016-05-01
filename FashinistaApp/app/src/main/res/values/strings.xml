@@ -7,5 +7,29 @@
 
     <string name="action_settings">Settings</string>
 
+    <string-array name="titles">
+        <item>image1ete</item>
+        <item>image2ete</item>
+        <item>image3ete</item>
+        <item>image4ete</item>
+        <item>image5ete</item>
+        <item>image6ete</item>
+        <item>image7ete</item>
+        <item>image8ete</item>
+        <item>image9ete</item>
+
+    </string-array>
+    <string-array name="description">
+        <item>description1</item>
+        <item>description2</item>
+        <item>description3</item>
+        <item>description4</item>
+        <item>description5</item>
+        <item>description6</item>
+        <item>description7</item>
+        <item>description8</item>
+        <item>description9</item>
+
+    </string-array>
 
 </resources>
