@@ -2,6 +2,9 @@ package tn.ines.fashinistaapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +22,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,11 +34,16 @@ public class Acceuil extends AppCompatActivity
 
 
     View myview;
+    ListView list;
+
+    String[] imagetitles;
+    String[] imagedescription;
+    int[] images ={R.drawable.image1ete,R.drawable.image4ete,R.drawable.image5ete};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+       super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceuil);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -58,6 +67,40 @@ public class Acceuil extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        Resources res=getResources();
+        imagetitles=res.getStringArray(R.array.titles);
+        imagedescription=res.getStringArray(R.array.description);
+        list=(ListView) findViewById(R.id.listView);
+        projetandroidAdapter adapter=new projetandroidAdapter(this,imagetitles,images,imagedescription);
+        list.setAdapter(adapter);
+
+
+        populateEventList();
+        registerCallBack();
+    }
+
+
+    private void populateEventList() {
+        String[] myItems={"Marriage","Soutenance","Fiançaille","Picnic"};
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.listitem,R.id.textview, myItems);
+
+        ListView list =(ListView) findViewById(R.id.listView);
+        list.setAdapter(adapter);
+    }
+
+
+    private void registerCallBack() {
+        ListView list =(ListView) findViewById(R.id.listView);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView textview = (TextView) view;
+                String message = "Vous avez choisi " + textview.getText().toString();
+                Toast.makeText(Acceuil.this, message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 
@@ -70,6 +113,7 @@ public class Acceuil extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+
     }
 
     @Override
@@ -103,6 +147,7 @@ public class Acceuil extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
 
         if(id==R.id.nav_tend){
+
             fragmentManager.beginTransaction().replace(R.id.content_frame,new SecondFragment()).commit();
 
         }else if(id==R.id.nav_chercher)
@@ -115,6 +160,43 @@ public class Acceuil extends AppCompatActivity
         return true;
     }
 
+    class projetandroidAdapter extends ArrayAdapter<String>
+    {
+        Context context;
+        int[] images;
+        String[] titlesArray;
+        String[] descriptionArray;
+
+        projetandroidAdapter(Context c, String[] titles,int[] imgs,String[] desc)
+        {
+            super(c,R.layout.single_row,R.id.textView,titles);
+            this.context=c;
+            this.images=imgs;
+            this.titlesArray=titles;
+            this.descriptionArray=desc;
+
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View row=convertView;
+            if(row==null) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                row = inflater.inflate(R.layout.single_row, parent, false);
+            }
+            ImageView Myimage= (ImageView) row.findViewById(R.id.imageView);
+            TextView Mytitle= (TextView) row.findViewById(R.id.textView);
+            TextView Mydescription= (TextView) row.findViewById(R.id.textView2);
+
+            Myimage.setImageResource(images [position]);
+            Mytitle.setText(titlesArray[position]);
+            Mydescription.setText(descriptionArray[position]);
+
+
+
+            return row;
+        }
+    }
 
 
 }
