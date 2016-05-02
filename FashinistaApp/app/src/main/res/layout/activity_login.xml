@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tn.ines.fashinistaapp.Login">
+    tools:context="tn.ines.fashinistaapp.Login"
+    android:background="@drawable/a">
 
 
 
@@ -46,7 +47,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt3"
-        android:id="@+id/edit2" />
+        android:id="@+id/edit2"
+        android:inputType="textPassword"/>
+
+
+
 
     <Button
         android:layout_width="wrap_content"

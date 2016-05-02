@@ -34,11 +34,11 @@ public class Acceuil extends AppCompatActivity
 
 
     View myview;
-    ListView list;
+   /* ListView list;
 
     String[] imagetitles;
     String[] imagedescription;
-    int[] images ={R.drawable.image1ete,R.drawable.image4ete,R.drawable.image5ete};
+    int[] images ={R.drawable.image1ete,R.drawable.image4ete,R.drawable.image5ete};*/
 
 
     @Override
@@ -67,12 +67,12 @@ public class Acceuil extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        Resources res=getResources();
+      /*  Resources res=getResources();
         imagetitles=res.getStringArray(R.array.titles);
         imagedescription=res.getStringArray(R.array.description);
         list=(ListView) findViewById(R.id.listView);
         projetandroidAdapter adapter=new projetandroidAdapter(this,imagetitles,images,imagedescription);
-        list.setAdapter(adapter);
+        list.setAdapter(adapter);*/
 
 
         populateEventList();
@@ -160,7 +160,7 @@ public class Acceuil extends AppCompatActivity
         return true;
     }
 
-    class projetandroidAdapter extends ArrayAdapter<String>
+   /* class projetandroidAdapter extends ArrayAdapter<String>
     {
         Context context;
         int[] images;
@@ -192,11 +192,11 @@ public class Acceuil extends AppCompatActivity
             Mytitle.setText(titlesArray[position]);
             Mydescription.setText(descriptionArray[position]);
 
-
-
             return row;
         }
-    }
+    }*/
+
+
 
 
 }
